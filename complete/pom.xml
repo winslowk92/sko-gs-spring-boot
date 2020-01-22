@@ -56,14 +56,12 @@
 	</build>
 <distributionManagement>
 		<snapshotRepository>
-			<id>snapshots</id>
-			<name>maven-snapshots</name>
-			<url>http://nexus.core-devops.com/repository/snapshots/</url>
+			<id>maven-snapshots</id>
+			<url>http://nexus.core-devops.com/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	    <repository>
-	      <id>maven-release</id>
-	      <name>maven-release</name>
-	      <url>http://nexus.core-devops.com/repository/maven-release/</url>
+		    <id>maven-releases</id>
+	      <url>http://nexus.core-devops.com/repository/maven-releases/</url>
 	    </repository>
 	  </distributionManagement>
 </project>

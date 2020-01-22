@@ -8,7 +8,7 @@ kind: Pod
 spec:
   containers:
   - name: maven
-    image: maven:3.3.9-jdk-8-alpine
+    image: sko:latest
     command: ['cat']
     tty: true
 """

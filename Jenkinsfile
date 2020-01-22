@@ -18,7 +18,7 @@ spec:
     stage('Run maven') {
       steps {
         container('maven') {
-          sh '''sleep 90
+          sh '''sleep 120
                 mvn deploy -f ./complete/pom.xml
                 '''
         }

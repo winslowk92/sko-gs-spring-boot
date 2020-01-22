@@ -18,7 +18,7 @@ spec:
     stage('Run maven') {
       steps {
         container('maven') {
-          sh 'mvn package'
+          sh 'mvn package -f ./complete/pom.xml'
         }
       }
     }

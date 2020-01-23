@@ -23,7 +23,7 @@ spec:
       }
     }
     stage ('Run SonarQube'){
-      stpes{
+      steps{
         container('maven'){
           sh 'mvn sonar:sonar'
         }}}

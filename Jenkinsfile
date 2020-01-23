@@ -1,4 +1,7 @@
 pipeline {
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '0'))
+  }
   agent {
     kubernetes {
       //cloud 'kubernetes'

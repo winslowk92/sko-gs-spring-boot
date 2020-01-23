@@ -18,15 +18,14 @@ spec:
     stage('Run maven') {
       steps {
         container('maven') {
-          sh ''' sleep 60
-          mvn deploy -f ./complete/pom.xml'''
+          sh 'mvn deploy -f ./complete/pom.xml'
         }
       }
     }
     stage ('Run SonarQube'){
       steps{
         container('maven'){
-          sh 'mvn sonar:sonar'
+          sh 'mvn sonar:sonar -f ./complete/pom.xml'
         }}}
   }
 }

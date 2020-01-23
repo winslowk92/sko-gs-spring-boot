@@ -8,7 +8,7 @@ kind: Pod
 spec:
   containers:
   - name: maven
-    image: danielrmartin/sko:latest
+    image: danielrmartin/sko:1.0
     command: ['cat']
     tty: true
 """

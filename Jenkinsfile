@@ -33,11 +33,11 @@ spec:
   }
   post {
     success {
-      step ([
-              $class: 'ElectricFlowPipelinePublisher',
-              configuration: 'flow-sko-demo',
-              projectName: 'flow-sko',
-              pipelineName: 'flow-sko-uc-1'
+      step([$class: 'ElectricFlowPipelinePublisher',
+	      configuration: 'flow-sko-demo',
+	      projectName: 'flow-sko',
+	      pipelineName: 'flow-sko-uc-1',
+	      addParam: '{"pipeline":{"pipelineName":"flow-sko-uc-1"}}'
       ])
     }
    }

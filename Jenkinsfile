@@ -32,9 +32,8 @@ spec:
         }}}
   }
   post {
-    success{
-      //step
-      ([
+    success {
+      step ([
               $class: 'ElectricFlowPipelinePublisher',
               configuration: 'flow-sko-demo',
               projectName: 'flow-sko',

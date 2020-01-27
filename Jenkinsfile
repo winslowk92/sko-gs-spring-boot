@@ -32,7 +32,7 @@ spec:
         }}}
   }
   post {
-    successful{
+    success{
       //step
       ([
               $class: 'ElectricFlowPipelinePublisher',

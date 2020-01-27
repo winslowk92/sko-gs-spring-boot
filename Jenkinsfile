@@ -31,4 +31,15 @@ spec:
           sh 'mvn sonar:sonar -f ./complete/pom.xml'
         }}}
   }
+  post {
+    successful{
+      //step([
+              $class: 'ElectricFlowPipelinePublisher',
+              configuration: 'flow-sko-demo',
+              projectName: 'flow-sko',
+              pipelineName: 'flow-sko-uc-1',
+              addParam: '{"pipeline":{"pipelineName":"flow-sko-demo","parameters":"[{\\\"parameterName\\\": \\\"PipelineParam\\\", \\\"parameterValue\\\": \\\"185\\\"}]"}}'
+      //])
+    }
+   }
 }

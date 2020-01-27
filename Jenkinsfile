@@ -37,8 +37,7 @@ spec:
               $class: 'ElectricFlowPipelinePublisher',
               configuration: 'flow-sko-demo',
               projectName: 'flow-sko',
-              pipelineName: 'flow-sko-uc-1',
-              addParam: '{"pipeline":{"pipelineName":"flow-sko-demo"}}'
+              pipelineName: 'flow-sko-uc-1'
       ])
     }
    }

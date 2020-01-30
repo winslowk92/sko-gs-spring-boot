@@ -4,8 +4,8 @@ use warnings;
 sub main
 {
 
-    my $jenkinsJobId = "$[/myPipelineRuntime/stages/validateRequirements/tasks/GetJenkinsJobLog/job/jobId]";
-    my $jenkinsJobName = "$[/myPipelineRuntime/stages/validateRequirements/tasks/GetJenkinsJobLog/job/jobName]";
+    my $jenkinsJobId = "$[/myPipelineRuntime/stages/CaptureValuesFromJenkinsLog/tasks/GetJenkinsJobLog/job/jobId]";
+    my $jenkinsJobName = "$[/myPipelineRuntime/stages/CaptureValuesFromJenkinsLog/tasks/GetJenkinsJobLog/job/jobName]";
     my $sonarProjectVersion;
     my $sonarProjectKey;
     my $sonarProjectName;
@@ -62,32 +62,36 @@ sub main
     print $sonarProjectKey . "\n";
     print $sonarProjectName . "\n";
 
+    print $nexusGroup . "\n";
+    print $nexusArtifact . "\n";
+    print $nexusVersion . "\n";
 
 	use ElectricCommander;
 	my $ec = ElectricCommander->new();
 
     $ec->createProperty({
-   			propertyName => "/myStageRuntime/sonarProjectVersion",
+   			propertyName => "/myPipelineRuntime/sonarProjectVersion",
           	value => $sonarProjectVersion
     	});
 	$ec->createProperty({
-			propertyName => "/myStageRuntime/sonarProjectKey",
+			propertyName => "/myPipelineRuntime/sonarProjectKey",
 			value => $sonarProjectKey
 		});
     $ec->createProperty({
-   			propertyName => "/myStageRuntime/sonarProjectName",
+   			propertyName => "/myPipelineRuntime/sonarProjectName",
           	value => $sonarProjectName
     	});
     $ec->createProperty({
-   			propertyName => "/myStageRuntime/nexusGroup",
+   			propertyName => "/myPipelineRuntime/nexusGroup",
           	value => $nexusGroup
     	});
 	$ec->createProperty({
-			propertyName => "/myStageRuntime/nexusArtifact",
+			propertyName => "/myPipelineRuntime/nexusArtifact",
 			value => $nexusArtifact
 		});
     $ec->createProperty({
-   			propertyName => "/myStageRuntime/nexusVersion",
+   			propertyName => "/myPipelineRuntime/nexusVersion",
           	value => $nexusVersion
     	});
 }
+main();

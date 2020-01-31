@@ -4,8 +4,8 @@ use warnings;
 sub main
 {
 
-    my $jenkinsJobId = "$[/myPipelineRuntime/stages/CaptureValuesFromJenkinsLog/tasks/GetJenkinsJobLog/job/jobId]";
-    my $jenkinsJobName = "$[/myPipelineRuntime/stages/CaptureValuesFromJenkinsLog/tasks/GetJenkinsJobLog/job/jobName]";
+    my $jenkinsJobId = "$[/myStageRuntime/tasks/getJenkinsJobLog/job/jobId]";
+    my $jenkinsJobName = "$[/myStageRuntime/tasks/getJenkinsJobLog/job/jobName]";
     my $sonarProjectVersion;
     my $sonarProjectKey;
     my $sonarProjectName;

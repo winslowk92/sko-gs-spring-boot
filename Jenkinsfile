@@ -40,16 +40,16 @@ spec:
   }
   post {
     success {
-      when {
-        // Only run if parameter is
-        expression { params.FLOW_CONTEXT == 'deploy' }
+      script {
+        if (params.FLOW_CONTEXT == 'deploy') {
+          step([$class: 'ElectricFlowPipelinePublisher',
+            configuration: 'flow-sko-jenkins-config',
+            projectName: 'flow-sko',
+            pipelineName: 'flow-sko-uc-1.1',
+            addParam: '{"pipeline":{"pipelineName":"flow-sko-uc-1","parameters":"[{\\\"parameterName\\\": \\\"jenkinsJobName\\\", \\\"parameterValue\\\": \\\"'+"${env.JOB_NAME}"+'\\\"},{\\\"parameterName\\\": \\\"jenkinsBuildNumber\\\", \\\"parameterValue\\\": \\\"'+"${env.BUILD_NUMBER}"+'\\\"}]"}}'
+          ])
+        }
       }
-      step([$class: 'ElectricFlowPipelinePublisher',
-        configuration: 'flow-sko-jenkins-config',
-        projectName: 'flow-sko',
-        pipelineName: 'flow-sko-uc-1.1',
-        addParam: '{"pipeline":{"pipelineName":"flow-sko-uc-1","parameters":"[{\\\"parameterName\\\": \\\"jenkinsJobName\\\", \\\"parameterValue\\\": \\\"'+"${env.JOB_NAME}"+'\\\"},{\\\"parameterName\\\": \\\"jenkinsBuildNumber\\\", \\\"parameterValue\\\": \\\"'+"${env.BUILD_NUMBER}"+'\\\"}]"}}'
-      ])
     }
    }
 }

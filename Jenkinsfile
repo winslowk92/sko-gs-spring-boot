@@ -17,6 +17,13 @@ spec:
 """
     }
   }
+  parameters {
+    choice(
+      choices: ['deploy' , 'release'],
+      description: '',
+      name: 'FLOW_CONTEXT'
+    )
+  }
   stages {
     stage('Run Maven') {
       steps {
@@ -33,12 +40,16 @@ spec:
   }
   post {
     success {
-step([$class: 'ElectricFlowPipelinePublisher',
-	configuration: 'flow-sko-jenkins-config',
-	projectName: 'flow-sko',
-	pipelineName: 'flow-sko-uc-1.1',
-	addParam: '{"pipeline":{"pipelineName":"flow-sko-uc-1","parameters":"[{\\\"parameterName\\\": \\\"jenkinsJobName\\\", \\\"parameterValue\\\": \\\"'+"${env.JOB_NAME}"+'\\\"},{\\\"parameterName\\\": \\\"jenkinsBuildNumber\\\", \\\"parameterValue\\\": \\\"'+"${env.BUILD_NUMBER}"+'\\\"}]"}}'
-])
+      when {
+        // Only run if parameter is
+        expression { params.FLOW_CONTEXT == 'deploy' }
+      }
+      step([$class: 'ElectricFlowPipelinePublisher',
+        configuration: 'flow-sko-jenkins-config',
+        projectName: 'flow-sko',
+        pipelineName: 'flow-sko-uc-1.1',
+        addParam: '{"pipeline":{"pipelineName":"flow-sko-uc-1","parameters":"[{\\\"parameterName\\\": \\\"jenkinsJobName\\\", \\\"parameterValue\\\": \\\"'+"${env.JOB_NAME}"+'\\\"},{\\\"parameterName\\\": \\\"jenkinsBuildNumber\\\", \\\"parameterValue\\\": \\\"'+"${env.BUILD_NUMBER}"+'\\\"}]"}}'
+      ])
     }
    }
 }
